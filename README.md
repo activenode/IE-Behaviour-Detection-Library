@@ -29,7 +29,7 @@ This documentation is described by the code samples below.
             alert('Hey you lazy user. Update your browser to at least IE10 - please!');
         }
     })
-        .otherwise(function(){
+        .otherie(function(){
             alert('Okay, so you\'re using IE, but not a one with doc <= 9');
         })
         .noie(function(){
