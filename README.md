@@ -9,6 +9,7 @@ This library provides a very new and simple way to check for both versions!
 This documentation is described by the code samples below.
 
 ### Check if it is IE10 with IE9 HTML Standards/Support
+
   IEBhvDetection.when('ie==10 && doc==9').then(function () {
     alert('Wow, stop this IE10! Dont be a liar, you act as IE9!');
   }).otherwise(function(ieVersion, docVersion){
