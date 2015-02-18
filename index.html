@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="author" content="David Lorenz" />
+    <title>IE Behaviour Detection Library</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            line-height: 150%;
+            font-size: 170%;
+            text-align: center;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: rgb(233, 233, 233);
+        }
+        
+        #container {
+            margin: auto;
+            margin-top: 25%;
+        }
+        
+        #container table {
+            width: 500px;
+            margin: auto;
+            border: 1px solid #acaeab;
+            background: #fefefe;
+        }
+        
+        #container table thead {
+            color: red;
+            font-size: 76%;
+        }
+        
+        #container table thead {
+            color: #15c0e4;
+        }
+        
+        #container strong {
+            display: block;
+            background: rgba(81, 157, 20, 0.7);
+            border: 10px solid rgb(81, 157, 20);
+            color: #fff;
+            padding: 1.5em;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        document.createElement('footer');
+    </script>
+    <script src="ie-bhv-detector.js"></script>
+</head>
+
+<body>
+    <div id="container" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    <th>Appversion</th>
+                    <th>Docversion (HTML)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="appversion"></th>
+                    <th id="docversion"></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <noscript>
+        <strong>You know it is about JavaScript...</strong>
+    </noscript>
+
+    <script>
+        var container = document.getElementById('container');
+        container.style.display = 'block';
+
+        var autoChecks = [
+           'ie == 10 && doc <= 10',
+           'ie == 10 && doc == 9',
+           'ie == 10 && doc == 8',
+           'ie == 9 && doc == 9',
+           'ie >= 9 && doc <= 8'
+       ];
+
+        for (var i in autoChecks) {
+            var toCheck = autoChecks[i];
+            IEBhvDetection.when(toCheck).then(function (appV, stdV) {
+                console.log('The statement [' + toCheck + '] is TRUE');
+            }).otherwise(function () {
+                console.log('The statement [' + toCheck + '] is FALSE');
+            });
+        }
+
+        IEBhvDetection.when().noie(function () {
+            container.innerHTML = '<strong>Congratu&shy;lations as you are not using the Internet Explorer!</strong>';
+        }).ie(function (appV, stdV) {
+            document.getElementById('appversion').innerHTML = 'IE ' + appV;
+            document.getElementById('docversion').innerHTML = 'IE ' + stdV;
+        });
+    </script>
+</body>
+
+</html>
