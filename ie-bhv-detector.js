@@ -107,7 +107,7 @@ var IEBhvDetection = (function(){
             
             var returnObj = {
                 then: function(cb){return this;}, 
-                otherwise: function(cb){return this;}, 
+                otherie: function(cb){return this;}, 
                 noie: function(cb){return this;}, 
                 ie: function(cb){return this;}
             };
@@ -119,7 +119,7 @@ var IEBhvDetection = (function(){
             if (!bExprValid) {
                 if (bIsIe) {
                     //is ie but the expr is not satisfied
-                    returnObj.otherwise = function(cb) {cb(_appVersion,_standardsVersion); return this;};
+                    returnObj.otherie = function(cb) {cb(_appVersion,_standardsVersion); return this;};
                 } else {
                     //not an ie anyway
                     returnObj.noie = function(cb) {cb(_appVersion,_standardsVersion); return this;};
