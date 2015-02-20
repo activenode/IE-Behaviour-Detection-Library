@@ -129,6 +129,32 @@ var IEBhvDetection = (function(){
             }
             
             return returnObj;
+        },
+        expose: function(prefix, docOnly){
+            var prefix;
+            if (!prefix) {
+                prefix = 'IEBD';
+            }
+            if (_appVersion==-1) {
+                return;
+            }
+            
+            //$.ie = {"appVersion": _appVersion, "docVersion": _standardsVersion};
+            var maxIe = 13;
+            var pstr = {'app': this.appVersion, 'doc': this.standardsVersion};
+            if (docOnly) {
+                delete pstr.app;
+            }
+            
+            for (var k in pstr) {
+                var uInt = pstr[k];
+                document.documentElement.className += " "+prefix+'_ie-'+k+'-'+uInt;
+                
+                while (uInt < maxIe) {
+                    uInt++;
+                    document.documentElement.className += " "+prefix+'_ie-'+k+'-lte-'+uInt;
+                }
+            }
         }
     };
 }());
