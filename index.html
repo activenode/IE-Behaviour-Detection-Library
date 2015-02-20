@@ -50,6 +50,69 @@
             position: absolute;
             bottom: 0;
         }
+        
+        .ie11condcomments, .ie10condcomments, .ie9condcomments, .ie8condcomments, .ie7condcomments {
+            display:none;
+            width:100px; height:100px;
+            line-height:100px; text-align: center;
+            color:#fff; background:#4dd5f2;
+            border:1px solid #4bbad2;
+            font-weight: bold;
+            margin:1em auto;
+        }
+        
+        .ie11condcomments > span, 
+        .ie10condcomments > span, 
+        .ie9condcomments > span, 
+        .ie8condcomments > span, 
+        .ie7condcomments > span {
+            font-size: 12px;
+        }
+        
+        .ie7condcomments {
+            background:#e81043;
+            border-color:#d71a35;
+        }
+        
+        .ie8condcomments {
+            background:#e5641e;
+            border-color:#d71a35;
+        }
+        
+        .ie9condcomments {
+            background:#12bedd;
+            border-color:#10a9c4;
+        }
+        
+        .ie10condcomments {
+            background:#16dde4;
+            border-color:#10b9bf;
+        }
+        
+        .ie11condcomments {
+            background:#b0d62e;
+            border-color:#95b819;
+        }
+        
+        .CC_ie-doc-7 .ie7condcomments {
+            display: block;
+        }
+        
+        .CC_ie-doc-8 .ie8condcomments {
+            display: block;
+        }
+        
+        .CC_ie-doc-9 .ie9condcomments {
+            display: block;
+        }
+        
+        .CC_ie-doc-10 .ie10condcomments {
+            display: block;
+        }
+        
+        .CC_ie-doc-11 .ie11condcomments {
+            display: block;
+        }
     </style>
     <script>
         document.createElement('footer');
@@ -73,6 +136,34 @@
                 </tr>
             </tbody>
         </table>
+        
+        <!-- blubber -->
+        
+
+        <div class="ie7condcomments">
+           <span>[CC]</span>
+            IE7
+        </div>
+        
+        <div class="ie8condcomments">
+           <span>[CC]</span>
+            IE8
+        </div>
+        
+        <div class="ie9condcomments">
+           <span>[CC]</span>
+            IE9
+        </div>
+        
+        <div class="ie10condcomments">
+           <span>[CC]</span>
+            IE10
+        </div>
+        
+        <div class="ie11condcomments">
+           <span>[CC]</span>
+            IE11
+        </div>
     </div>
     <noscript>
         <strong>You know it is about JavaScript...</strong>
@@ -81,7 +172,8 @@
     <script>
         var container = document.getElementById('container');
         container.style.display = 'block';
-
+        
+        /*
         var autoChecks = [
            'ie == 10 && doc <= 10',
            'ie == 10 && doc == 9',
@@ -94,17 +186,19 @@
             var toCheck = autoChecks[i];
             IEBhvDetection.when(toCheck).then(function (appV, stdV) {
                 console.log('The statement [' + toCheck + '] is TRUE');
-            }).otherwise(function () {
+            }).otherie(function () {
                 console.log('The statement [' + toCheck + '] is FALSE');
             });
-        }
+        }*/
 
         IEBhvDetection.when().noie(function () {
-            container.innerHTML = '<strong>Congratu&shy;lations as you are not using the Internet Explorer!</strong>';
+            //container.innerHTML = '<strong>Congratu&shy;lations as you are not using the Internet Explorer!</strong>';
         }).ie(function (appV, stdV) {
             document.getElementById('appversion').innerHTML = 'IE ' + appV;
             document.getElementById('docversion').innerHTML = 'IE ' + stdV;
         });
+        
+        IEBhvDetection.expose('CC');
     </script>
 </body>
 
