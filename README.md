@@ -4,6 +4,10 @@ This library is provided since *IE Conditional Comments* are not sufficient anym
 E.g. when a user sets up the Internet Explorer to be run at Version 10 with the Doc-Version of IE9 you can neither use IE10-CSS-Hacks nor IE9 Conditional Comments - a dilemma.
 This library provides a very new and simple way to check for both versions!
 
+## Preamble
+In todays web development you should rather use [Feature Detection](https://en.wikipedia.org/wiki/Feature_detection_(web_development))  instead.
+This JS library should only be used when you definitely - for whatever reason - need to detect a running version of Internet Explorer.
+
 
 ## Documentation
 This documentation is described by the code samples below.
